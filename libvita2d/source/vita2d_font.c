@@ -212,11 +212,13 @@ static int atlas_add_glyph(texture_atlas *atlas, unsigned int glyph_index,
 	return 1;
 }
 
-static int generic_font_draw_text(vita2d_font *font, int draw,
+static int generic_font_draw_text_dropshadow(vita2d_font *font, int draw,
 				   int *height, int x, int y,
 				   unsigned int color,
 				   unsigned int size,
-				   const char *text)
+				   const char *text,
+				   int dropshadowX, int dropshadowY,
+				   unsigned int dropshadowColor)
 {
 	const FT_ULong flags = FT_LOAD_RENDER | FT_LOAD_TARGET_NORMAL;
 	FT_Face face;
@@ -290,6 +292,15 @@ static int generic_font_draw_text(vita2d_font *font, int draw,
 		const float draw_scale = size / (float)data.glyph_size;
 
 		if (draw) {
+			if (dropshadowX!=-1){
+				vita2d_draw_texture_tint_part_scale(tex,
+					dropshadowX + pen_x + data.bitmap_left * draw_scale,
+					dropshadowY + pen_y - data.bitmap_top * draw_scale,
+					rect.x, rect.y, rect.w, rect.h,
+					draw_scale,
+					draw_scale,
+					dropshadowColor);
+			}
 			vita2d_draw_texture_tint_part_scale(tex,
 				pen_x + data.bitmap_left * draw_scale,
 				pen_y - data.bitmap_top * draw_scale,
@@ -311,10 +322,26 @@ static int generic_font_draw_text(vita2d_font *font, int draw,
 	return max_x - x;
 }
 
+static int generic_font_draw_text(vita2d_font *font, int draw,
+				   int *height, int x, int y,
+				   unsigned int color,
+				   unsigned int size,
+				   const char *text)
+{
+	return generic_font_draw_text_dropshadow(font,draw,height,x,y,color,size,text,-1,-1,0);
+}
+
 int vita2d_font_draw_text(vita2d_font *font, int x, int y, unsigned int color,
 			   unsigned int size, const char *text)
 {
 	return generic_font_draw_text(font, 1, NULL, x, y, color, size, text);
+}
+
+int vita2d_font_draw_text_dropshadow(vita2d_font *font, int x, int y, unsigned int color,
+			   unsigned int size, const char *text,
+			   int dropshadowX, int dropshadowY, unsigned int dropshadowColor)
+{
+	return generic_font_draw_text_dropshadow(font, 1, NULL, x, y, color, size, text, dropshadowX, dropshadowY, dropshadowColor);
 }
 
 int vita2d_font_draw_textf(vita2d_font *font, int x, int y, unsigned int color,
