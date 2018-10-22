@@ -293,20 +293,20 @@ static int generic_font_draw_text_dropshadow(vita2d_font *font, int draw,
 
 		if (draw) {
 			if (dropshadowX!=-1){
-				vita2d_draw_texture_tint_part_scale(tex,
+				vita2d_draw_texture_tint_part_sized(tex,
 					dropshadowX + pen_x + data.bitmap_left * draw_scale,
 					dropshadowY + pen_y - data.bitmap_top * draw_scale,
 					rect.x, rect.y, rect.w, rect.h,
-					draw_scale,
-					draw_scale,
+					rect.w*draw_scale,
+					rect.h*draw_scale,
 					dropshadowColor);
 			}
-			vita2d_draw_texture_tint_part_scale(tex,
+			vita2d_draw_texture_tint_part_sized(tex,
 				pen_x + data.bitmap_left * draw_scale,
 				pen_y - data.bitmap_top * draw_scale,
 				rect.x, rect.y, rect.w, rect.h,
-				draw_scale,
-				draw_scale,
+				rect.w*draw_scale,
+				rect.h*draw_scale,
 				color);
 		}
 

@@ -1,4 +1,4 @@
-TARGET_LIB = libvita2d.a
+TARGET_LIB = libvita2dplusbloat.a
 OBJS       = source/vita2d.o source/vita2d_texture.o source/vita2d_draw.o source/utils.o \
              source/vita2d_image_png.o source/vita2d_image_jpeg.o source/vita2d_image_bmp.o \
              source/vita2d_font.o source/vita2d_pgf.o source/vita2d_pvf.o \
@@ -29,5 +29,6 @@ clean:
 install: $(TARGET_LIB)
 	@mkdir -p $(DESTDIR)$(PREFIX)/lib/
 	cp $(TARGET_LIB) $(DESTDIR)$(PREFIX)/lib/
-	@mkdir -p $(DESTDIR)$(PREFIX)/include/
-	cp include/vita2d.h $(DESTDIR)$(PREFIX)/include/
+	@mkdir -p $(DESTDIR)$(PREFIX)/include/libvita2dplusbloat/
+	cp include/vita2d.h $(DESTDIR)$(PREFIX)/include/libvita2dplusbloat/
+	echo $(DESTDIR)$(PREFIX)/include/libvita2dplusbloat/

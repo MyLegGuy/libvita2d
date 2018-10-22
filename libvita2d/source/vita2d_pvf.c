@@ -329,13 +329,13 @@ int generic_pvf_draw_text(vita2d_pvf *font, int draw, int *height,
 		}
 
 		if (draw) {
-			vita2d_draw_texture_tint_part_scale(tex,
+			vita2d_draw_texture_tint_part_sized(tex,
 				pen_x + data.bitmap_left * scale,
 				pen_y - data.bitmap_top * scale,
 				rect.x + PVF_GLYPH_MARGIN / 2.0f, rect.y + PVF_GLYPH_MARGIN / 2.0f,
 				rect.w - PVF_GLYPH_MARGIN / 2.0f, rect.h - PVF_GLYPH_MARGIN / 2.0f,
-				scale,
-				scale,
+				(rect.w - PVF_GLYPH_MARGIN / 2.0f)*scale,
+				(rect.h - PVF_GLYPH_MARGIN / 2.0f)*scale,
 				color);
 		}
 

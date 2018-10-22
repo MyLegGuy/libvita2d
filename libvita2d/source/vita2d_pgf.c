@@ -292,12 +292,12 @@ int generic_pgf_draw_text(vita2d_pgf *font, int draw, int *height,
 		}
 
 		if (draw) {
-			vita2d_draw_texture_tint_part_scale(tex,
+			vita2d_draw_texture_tint_part_sized(tex,
 				pen_x + data.bitmap_left * scale,
 				pen_y - data.bitmap_top * scale,
 				rect.x, rect.y, rect.w, rect.h,
-				scale,
-				scale,
+				rect.w*scale,
+				rect.h*scale,
 				color);
 		}
 
