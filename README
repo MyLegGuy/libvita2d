@@ -1,4 +1,4 @@
-## VITA2DLIB
+## VITA2DLIBPLUSBLOAT
 
 Fork of libvita2d (https://github.com/xerpi/libvita2d). Has whatever changes I need.
 Headers go in their own folder and the library is renamed so this can be installed alongside regular libvita2d.
