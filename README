@@ -2,3 +2,9 @@
 
 Fork of libvita2d (https://github.com/xerpi/libvita2d). Has whatever changes I need.
 Headers go in their own folder and the library is renamed so this can be installed alongside regular libvita2d.
+
+How to compile and install:
+	git clone https://github.com/MyLegGuy/libvita2dplusbloat
+	cd libvita2dplusbloat
+	cd libvita2d
+	make install
