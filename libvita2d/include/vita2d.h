@@ -79,7 +79,7 @@ SceGxmContext *vita2d_get_context();
 SceGxmShaderPatcher *vita2d_get_shader_patcher();
 
 void vita2d_set_region_clip(SceGxmRegionClipMode mode, unsigned int x_min, unsigned int y_min, unsigned int x_max, unsigned int y_max);
-void vita2d_enable_clipping();
+void vita2d_enable_clipping(int x_min, int y_min, int x_max, int y_max); // Pass -1 for x_min to use last values
 void vita2d_disable_clipping();
 int vita2d_get_clipping_enabled();
 void vita2d_set_clip_rectangle(int x_min, int y_min, int x_max, int y_max);

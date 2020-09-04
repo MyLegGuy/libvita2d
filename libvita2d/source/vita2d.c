@@ -814,10 +814,14 @@ void vita2d_end_drawing()
 	drawing = 0;
 }
 
-void vita2d_enable_clipping()
+void vita2d_enable_clipping(int x_min, int y_min, int x_max, int y_max)
 {
 	clipping_enabled = 1;
-	vita2d_set_clip_rectangle(clip_rect_x_min, clip_rect_y_min, clip_rect_x_max, clip_rect_y_max);
+	if (x_min!=-1){
+		vita2d_set_clip_rectangle(x_min,y_min,x_max,y_max);
+	}else{
+		vita2d_set_clip_rectangle(clip_rect_x_min, clip_rect_y_min, clip_rect_x_max, clip_rect_y_max);
+	}
 }
 
 void vita2d_disable_clipping()

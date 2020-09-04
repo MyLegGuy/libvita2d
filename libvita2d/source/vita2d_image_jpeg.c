@@ -6,7 +6,7 @@
 #include <jpeglib.h>
 #include "vita2d.h"
 
-static vita2d_texture *_vita2d_load_JPEG_generic(struct jpeg_decompress_struct *jinfo, struct jpeg_error_mgr *jerr)
+vita2d_texture *_vita2d_load_JPEG_generic(struct jpeg_decompress_struct *jinfo, struct jpeg_error_mgr *jerr)
 {
 	float downScaleWidth = (float)jinfo->image_width / 4096;
 	float downScaleHeight = (float)jinfo->image_height / 4096;

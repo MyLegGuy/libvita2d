@@ -20,7 +20,7 @@ static void _vita2d_read_png_buffer_fn(png_structp png_ptr, png_bytep data, png_
 	*address += length;
 }
 
-static vita2d_texture *_vita2d_load_PNG_generic(const void *io_ptr, png_rw_ptr read_data_fn)
+vita2d_texture *_vita2d_load_PNG_generic(const void *io_ptr, png_rw_ptr read_data_fn)
 {
 	png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 	if (png_ptr == NULL) {
