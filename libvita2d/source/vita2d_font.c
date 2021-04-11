@@ -251,6 +251,9 @@ static int generic_font_draw_text_dropshadow(vita2d_font *font, int draw,
 
 	for (i = 0; text[i];) {
 		i += utf8_to_ucs2(&text[i], &character);
+		if (character==1){
+			continue;
+		}
 
 		if (character == '\n') {
 			if (pen_x > max_x)
