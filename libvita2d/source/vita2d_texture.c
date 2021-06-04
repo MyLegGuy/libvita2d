@@ -647,6 +647,18 @@ static inline void draw_texture_sized_rotate_hotspot_generic(const vita2d_textur
 		vertices[i].y = _x*s + _y*c + y;
 	}
 
+	vertices[0].x -= -center_x_scaled;
+	vertices[0].y -= -center_y_scaled;
+
+	vertices[1].x += center_x_scaled;
+	vertices[1].y -= -center_y_scaled;
+
+	vertices[2].x -= -center_x_scaled;
+	vertices[2].y += center_y_scaled;
+
+	vertices[3].x += center_x_scaled;
+	vertices[3].y += center_y_scaled;
+
 	// Set the texture to the TEXUNIT0
 	sceGxmSetFragmentTexture(_vita2d_context, 0, &texture->gxm_tex);
 
